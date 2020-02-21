@@ -1,0 +1,22 @@
+version: '3'
+services:
+    api:
+        container_name: docker-sails
+        restart: always
+        build: './server'
+        volumes:
+            - './server:/usr/src/app'
+        ports:
+            - '80:1337'
+        links:
+            - db
+    db:
+        container_name: mysql
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: sails-test
+        ports:
+            - "3306:3306"

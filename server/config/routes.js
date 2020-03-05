@@ -14,8 +14,6 @@ module.exports.routes = {
     view: 'pages/homepage'
   },
 
-  '/halo': {
-    view: '404'
-  }
+  '/apa/:kategoriId': 'KategoriController.satu'
 
 };

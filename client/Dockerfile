@@ -7,6 +7,6 @@ COPY . /usr/src/app
 # RUN npm install
 RUN npm install -g @vue/cli
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["npm", "run", "serve"]

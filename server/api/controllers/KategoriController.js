@@ -6,5 +6,7 @@
  */
 
 module.exports = {
-
+  /* findOne: function (req, res) {
+    return res.ok();
+  } */
 };

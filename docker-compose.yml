@@ -1,23 +1,26 @@
 version: '3'
 services:
+    server:
+        container_name: nginx-server
+        image: nginx
+        restart: always
+        ports:
+            - '80:80'
+        links:
+            - web
+            - api
     web:
         container_name: docker-vue
         restart: always
         build: ./client
         volumes:
-            - './client:/usr/src/api'
-        ports:
-            - '80:8080'
-        links:
-            - api
+            - './client:/usr/src/app'
     api:
         container_name: docker-sails
         restart: always
         build: './server'
         volumes:
             - './server:/usr/src/app'
-        ports:
-            - '8080:80'
         links:
             - db
     db:
@@ -25,8 +28,6 @@ services:
         image: mysql
         command: --default-authentication-plugin=mysql_native_password
         restart: always
-        # volumes:
-        #     - ./data:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: sails-test

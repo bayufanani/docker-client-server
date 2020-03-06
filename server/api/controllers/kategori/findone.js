@@ -2,10 +2,9 @@ module.exports = {
   friendlyName: 'Satu saja',
   description: 'tampilkan kategori terpilih',
   inputs: {
-    kategoriId: {
+    id: {
       description: 'id kategori yang dicari',
       type: 'number',
-      required: true // input wajib
     }
   },
 
@@ -19,9 +18,9 @@ module.exports = {
     }
   },
 
-  fn: async function (inputs) {
+  fn: async function () {
     // All done.
-    let kategori = await Kategori.findOne({ id: inputs.kategoriId });
+    let kategori = await Kategori.findOne({ id: this.req.params.id });
     if (!kategori) throw { aneh: 'kok aneh tidak ketemu, hayooo' };
     return {
       message: 'sukses',

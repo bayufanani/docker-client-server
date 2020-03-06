@@ -14,6 +14,6 @@ module.exports.routes = {
     view: 'pages/homepage'
   },
 
-  '/apa/:kategoriId': 'KategoriController.satu'
+  '/apa/:kategoriId': 'KategoriController.find-one'
 
 };
